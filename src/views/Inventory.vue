@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-      <h1 class="text-center">Inventario</h1>
+      <h1 class="text-center mb-5">Inventario</h1>
       <div class="alert alert-warning" role="alert">
         En construcción...
       </div>

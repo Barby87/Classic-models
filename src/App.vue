@@ -3,13 +3,13 @@
     <div>
       <NavBar/>
     </div>
-    <router-view/>
+    <router-view class="py-5"/>
   </div>
 </template>
 
 <script>
 // Importando función conectionApi como módulo
-import { conectionApi } from './config/configApi';
+// import { conectionApi } from './config/configApi';
 // Componentes
 import NavBar from './components/NavBar.vue';
 export default {
@@ -18,9 +18,9 @@ export default {
     NavBar
   },
 
-  mounted() {
-    conectionApi();
-  }
+  // mounted() {
+  //   conectionApi();
+  // }
 }
 </script>
 

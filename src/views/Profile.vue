@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-      <h1 class="text-center">Perfil de usuario</h1>
+      <h1 class="text-center mb-5">Perfil de usuario</h1>
       <div class="alert alert-warning" role="alert">
         En construcción...
       </div>
