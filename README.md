@@ -1,24 +1,21 @@
-# tarea_classic_models-orders
+# Classic Models orders
 
-## Project setup
-```
-yarn install
-```
+Nombre: Bárbara Cáceres Sepúlveda
+Rut: 16.637.834-6
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+Proyecto realizado con el objetivo de ordenar el sistema de administración de órdenes que cursan los vendedores de las distintas oficinas alrededor del mundo de Classicmodels, empresa que se dedica a la comercialización de modelos a escala de distintos tipos de vehículos motorizados tales como automóviles, motocicletas, trenes y aviones, entre otros.
 
-### Compiles and minifies for production
+
+En este proyecto se está utilizando Yarn, para instalarlo, emplementar por la terminal el comando npm i -g yarn. Para mayor informacion visitar: https://yarnpkg.com/getting-started
+
+## Instalación del proyecto
 ```
-yarn build
+Para instalar las dependencias del proyecto, ejecutar el comando yarn install
 ```
 
-### Lints and fixes files
+### Compilación
 ```
-yarn lint
-```
+Una vez instaladas las dependencias, ejecutar el comando yarn serve para poder activar el servidor local y verlo en el navegador.
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
