@@ -8,8 +8,6 @@
 </template>
 
 <script>
-// Importando función conectionApi como módulo
-// import { conectionApi } from './config/configApi';
 // Componentes
 import NavBar from './components/NavBar.vue';
 export default {
@@ -17,10 +15,6 @@ export default {
   components: {
     NavBar
   },
-
-  // mounted() {
-  //   conectionApi();
-  // }
 }
 </script>
 
