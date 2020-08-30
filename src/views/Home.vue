@@ -1,24 +1,26 @@
 <template>
-  <div>
-    <h3>Home</h3>
+  <div class="mx-4">
+    <h5>Home</h5>
     <!-- Jumbotron -->
-    <div class="jumbotron">
+    <div class="jumbotron p-1">
       <div>
-        <img src="" alt="Vitrina">
+        <img class="img-auto" src='../assets/auto5.jpg' alt="Vitrina">
       </div>
       <hr class="my-4">
       <h4>Bienvenido</h4>
       <p>Bienvenido al sistema de Ordenes e Inventario de ClassicModels.</p>
     </div>
 
-    <div class="row mb-5 container">
+    <!-- Cards -->
+    <div class="container">
+      <div class="row mb-5 d-flex">
       <div class="col-md-6">
         <div class="card mb-3" style="max-width: 540px;">
           <div class="row no-gutters">
             <div class="col-md-4">
-              <div id="progress1">
-
-              </div>
+              <radial-progress-bar :diameter="150" :completed-steps="completedSteps1" :total-steps="totalSteps1" start-color="#12a180" stop-color="#12a180" innerStrokeColor="#fff">
+                <h2>{{totalOrdenesCumplidas}}%</h2>
+              </radial-progress-bar>
             </div>
             <div class="col-md-8">
               <div class="card-body">
@@ -43,9 +45,9 @@
         <div class="card mb-3" style="max-width: 540px;">
           <div class="row no-gutters">
             <div class="col-md-4">
-              <div id="progress2">
-
-              </div>
+              <radial-progress-bar :diameter="150" :completed-steps="completedSteps2" :total-steps="totalSteps2" start-color="#12a180" stop-color="#12a180" innerStrokeColor="#fff">
+                <h2>{{totalOrdenesAtrasadas}}%</h2>
+              </radial-progress-bar>
             </div>
             <div class="col-md-8">
               <div class="card-body">
@@ -66,10 +68,12 @@
         </div>
       </div>
     </div>
-
+    </div>
+    
+    <!-- Tables -->
     <div class="row">
       <div class="col-lg-6">
-        <h4 class="font-weight-bold">Últimas Ordenes</h4>
+        <h4 class="font-weight-bold pb-4">Últimas Ordenes</h4>
         <table class="table table-bordered">
           <thead>
             <tr>
@@ -95,7 +99,7 @@
       </div>
 
       <div class="col-lg-6">
-        <h4 class="font-weight-bold">Últimas Devoluciones</h4>
+        <h4 class="font-weight-bold pb-4">Últimas Devoluciones</h4>
         <table class="table table-bordered">
           <thead>
             <tr>
@@ -123,17 +127,37 @@
 </template>
 
 <script>
+import RadialProgressBar from 'vue-radial-progress'
 import { conectionApi } from '../config/configApi';
 export default {
   name: 'Home',
 
-  components: {
+  data() {
+    return {
+      completedSteps1: 1500,
+      totalSteps1: 2000,
+      completedSteps2: 14,
+      totalSteps2: 700
+    }
   },
 
-   computed: {
+  components: {
+    RadialProgressBar
+  },
+
+  computed: {
     traerCumplimientoOrdenes() {
       return this.$store.getters.mostrarCumplimientoOrdenes;
+    },
+
+    totalOrdenesCumplidas() {
+      return (this.completedSteps1 / this.totalSteps1)*100;
+    },
+
+    totalOrdenesAtrasadas() {
+      return (this.completedSteps2 / this.totalSteps2)*100;
     }
+
   },
 
   mounted() {
@@ -146,5 +170,8 @@ export default {
 </script>
 
 <style>
-
+.img-auto {
+  max-width: 100%;
+  background-size: cover; 
+}
 </style>

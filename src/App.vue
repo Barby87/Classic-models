@@ -1,7 +1,8 @@
 <template>
   <div>
     <div>
-      <NavBar/>
+      <!-- <NavBar1/> -->
+      <NavBar2/>
     </div>
     <router-view class="py-5"/>
   </div>
@@ -9,11 +10,13 @@
 
 <script>
 // Componentes
-import NavBar from './components/NavBar.vue';
+// import NavBar1 from './components/NavBar1.vue';
+import NavBar2 from './components/NavBar2.vue';
 export default {
   name: 'App',
   components: {
-    NavBar
+    // NavBar1,
+    NavBar2
   },
 }
 </script>

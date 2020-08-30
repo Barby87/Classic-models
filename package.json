@@ -28,6 +28,7 @@
     "node-sass": "^4.12.0",
     "popper.js": "^1.16.1",
     "sass-loader": "^8.0.2",
+    "vue-radial-progress": "^0.3.2",
     "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {
