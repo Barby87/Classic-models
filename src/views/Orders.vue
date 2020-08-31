@@ -21,7 +21,12 @@
               <td>{{item.monto}}</td>
               <td>{{item.cant_productos}}</td>
               <td>{{item.fecha_entrega}}</td>
-              <td>{{item.avance_preparacion}}</td>
+              <td>
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar" :style='`width: ${item.avance_preparacion*100}%`' :aria-valuenow='`${item.avance_preparacion*100}`' aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                {{item.avance_preparacion*100}}
+              </td>
               <td>{{item.estado}}</td>
               <td>
                 <button class="btn btn-primary btn-sm">Ver Detalle</button>
@@ -33,9 +38,15 @@
 </template>
 
 <script>
-import { conectionApi } from '../config/configApi';
+import { conectionApi } from '@/config/configApi';
 export default {
   name: 'Orders',
+
+  data() {
+    return {
+      // avancePreparacionData: this.avancePreparacion
+    }
+  },
 
   components: {
   },
@@ -43,11 +54,15 @@ export default {
   computed: {
     traerOrdenes() {
       return this.$store.getters.mostrarOrdenes;
-    }    
+    },
+    
+    // avancePreparacion() {
+    //   return this.traerOrdenes['ordenes:'].avance_preparacion*100
+    // }
   },
 
   mounted() {
-    conectionApi('ordenes').then(response => {
+    conectionApi('secure/ordenes').then(response => {
       console.log('response Ordenes', response)
       this.$store.dispatch('guardaDataOrdenes', response);
     }).catch(error => console.error(error));

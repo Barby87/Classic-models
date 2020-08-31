@@ -9,7 +9,7 @@
             </div>
             <div class="form-group">
               <label for="exampleInputEmail1">Email address</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" v-model="email">
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" v-model="user">
             </div>
             <div class="form-group">
               <label for="exampleInputPassword1">Password</label>
@@ -23,23 +23,31 @@
 </template>
 
 <script>
-export default {
+import {mapActions} from 'vuex';
 
+export default {
   name:'Login',
   data() {
     return {
       password: '',
-      email: '',
+      user: '',
       error: ''
     }
   },
 
   methods: {
+    ...mapActions([
+      'guardaToken',
+      ]),
+
     login() {
-      if (!this.email && !this.password) {
+      if (!this.user && !this.password) {
         this.error = 'Debe ingresar los datos del usuario';
       }else {
-        this.$router.push('/');
+         this.guardaToken(this.user, this.password).then(()=>{
+           this.$router.push('/'); 
+           console.log('token ok');
+        });
       }
     }
   }

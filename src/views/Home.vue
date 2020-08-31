@@ -17,20 +17,20 @@
       <div class="col-md-6">
         <div class="card mb-3" style="max-width: 540px;">
           <div class="row no-gutters">
-            <div class="col-md-4">
+            <div class="col-4">
               <radial-progress-bar :diameter="150" :completed-steps="completedSteps1" :total-steps="totalSteps1" start-color="#12a180" stop-color="#12a180" innerStrokeColor="#fff">
                 <h2>{{totalOrdenesCumplidas}}%</h2>
               </radial-progress-bar>
             </div>
-            <div class="col-md-8">
+            <div class="col-8">
               <div class="card-body">
                 <h5 class="card-title">{{traerCumplimientoOrdenes.kpis[0].nombre}}</h5>
                 <div class="row">
-                  <div class="col">
+                  <div class="col-6">
                     <h2>{{traerCumplimientoOrdenes.kpis[0].entregadas}}</h2>
                     <p class="card-text"><small class="text-muted">Ordenes entregadas</small></p>
                   </div>
-                  <div class="col">
+                  <div class="col-6">
                     <h2>{{traerCumplimientoOrdenes.kpis[0].pendientes}}</h2>
                     <p class="card-text"><small class="text-muted">Ordenes pendientes</small></p>
                   </div>
@@ -44,20 +44,20 @@
       <div class="col-md-6">
         <div class="card mb-3" style="max-width: 540px;">
           <div class="row no-gutters">
-            <div class="col-md-4">
+            <div class="col-4">
               <radial-progress-bar :diameter="150" :completed-steps="completedSteps2" :total-steps="totalSteps2" start-color="#12a180" stop-color="#12a180" innerStrokeColor="#fff">
                 <h2>{{totalOrdenesAtrasadas}}%</h2>
               </radial-progress-bar>
             </div>
-            <div class="col-md-8">
+            <div class="col-8">
               <div class="card-body">
                 <h5 class="card-title">{{traerCumplimientoOrdenes.kpis[1].nombre}}</h5>
                 <div class="row">
-                  <div class="col">
+                  <div class="col-6">
                     <h2>{{traerCumplimientoOrdenes.kpis[1].totales}}</h2>
                     <p class="card-text"><small class="text-muted">Ordenes totales</small></p>
                   </div>
-                  <div class="col">
+                  <div class="col-6">
                     <h2>{{traerCumplimientoOrdenes.kpis[1].atrasadas}}</h2>
                     <p class="card-text"><small class="text-muted">Ordenes atrasadas</small></p>
                   </div>
@@ -128,7 +128,7 @@
 
 <script>
 import RadialProgressBar from 'vue-radial-progress'
-import { conectionApi } from '../config/configApi';
+import { conectionApi } from '@/config/configApi';
 export default {
   name: 'Home',
 
@@ -161,7 +161,7 @@ export default {
   },
 
   mounted() {
-    conectionApi('dashboard').then(response => {
+    conectionApi('secure/dashboard').then(response => {
       console.log('response Dashboard', response)
       this.$store.dispatch('guardaDataDashboard', response);
     }).catch(error => console.error(error));

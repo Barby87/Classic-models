@@ -22,7 +22,7 @@
                         <router-link class="nav-link" to='/profile'>Profile</router-link>
                     </li>
                     <li>
-                        <router-link class="nav-link" to='/login'>Logout</router-link>
+                        <a class="nav-link" href="#" @click="logout">Logout</a>
                     </li>
                 </ul>
             </span>
@@ -32,7 +32,19 @@
 </template>
 
 <script>
+import {mapActions} from 'vuex';
+
 export default {
+    methods: {
+        ...mapActions([
+            'resetToken',
+        ]),
+
+        logout() {
+            this.resetToken();
+            this.$router.push('/login');
+        }
+    }
 
 }
 </script>
