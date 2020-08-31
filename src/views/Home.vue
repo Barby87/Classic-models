@@ -157,7 +157,6 @@ export default {
     totalOrdenesAtrasadas() {
       return (this.completedSteps2 / this.totalSteps2)*100;
     }
-
   },
 
   mounted() {

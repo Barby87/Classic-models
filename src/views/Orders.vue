@@ -44,7 +44,7 @@ export default {
 
   data() {
     return {
-      // avancePreparacionData: this.avancePreparacion
+      
     }
   },
 
@@ -54,11 +54,7 @@ export default {
   computed: {
     traerOrdenes() {
       return this.$store.getters.mostrarOrdenes;
-    },
-    
-    // avancePreparacion() {
-    //   return this.traerOrdenes['ordenes:'].avance_preparacion*100
-    // }
+    }
   },
 
   mounted() {

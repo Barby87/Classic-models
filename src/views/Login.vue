@@ -31,19 +31,23 @@ export default {
     return {
       password: '',
       user: '',
-      error: ''
+      error: '',
+      regEx: `^[^@]+@[^@]+\\.[a-zA-Z]{2,}$`
+
     }
   },
 
   methods: {
     ...mapActions([
       'guardaToken',
-      ]),
+    ]),
 
     login() {
-      if (!this.user && !this.password) {
+      if (!this.user || !this.password) {
         this.error = 'Debe ingresar los datos del usuario';
-      }else {
+      } else if(this.user !== this.regEx) {
+        this.error = 'Ingrese un correo válido';
+      } else {
          this.guardaToken(this.user, this.password).then(()=>{
            this.$router.push('/'); 
            console.log('token ok');
