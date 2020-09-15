@@ -39,7 +39,7 @@ export default new Vuex.Store({
     },
 
     resetToken(state) {
-      state.token =''
+      state.token = '';
     }
   },
 
@@ -53,12 +53,12 @@ export default new Vuex.Store({
     },
 
     guardaToken(context, user, password) {
-      async function apiToken()
-      {
+      async function apiToken() {
         const token = await postApiLogin(user, password);
 
         context.commit('guardaTokenMutation', token.token)
       }
+      
       return apiToken();
     },
 
