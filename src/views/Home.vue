@@ -1,6 +1,8 @@
 <template>
-  <div class="mx-4">
-    <h5>Home</h5>
+  <div class="mx-3 mx-md-5">
+    <h5>{{$route.name}}</h5>
+    <!-- <p>{{$route.path}}</p> -->
+
     <!-- Jumbotron -->
     <div class="jumbotron p-1">
       <div>
@@ -17,8 +19,8 @@
         <div class="col-md-6">
           <div class="card mb-3" style="max-width: 540px;">
             <div class="row no-gutters">
-              <div class="col-4">
-                <radial-progress-bar :diameter="150" :completed-steps="parseInt(`${traerCumplimientoOrdenes.kpis[0].entregadas}`)" :total-steps="parseInt(`${traerCumplimientoOrdenes.kpis[0].entregadas}`) + parseInt(`${traerCumplimientoOrdenes.kpis[0].pendientes}`)" start-color="#12a180" stop-color="#12a180" innerStrokeColor="#fff">
+              <div class="col-4 d-flex align-items-center">
+                <radial-progress-bar :diameter="130" :completed-steps="parseInt(`${traerCumplimientoOrdenes.kpis[0].entregadas}`)" :total-steps="parseInt(`${traerCumplimientoOrdenes.kpis[0].entregadas}`) + parseInt(`${traerCumplimientoOrdenes.kpis[0].pendientes}`)" start-color="#12a180" stop-color="#12a180" innerStrokeColor="#fff">
                   <h2>{{porcentajeOrdenesCumplidas}}%</h2>
                 </radial-progress-bar>
               </div>
@@ -44,8 +46,8 @@
         <div class="col-md-6">
           <div class="card mb-3" style="max-width: 540px;">
             <div class="row no-gutters">
-              <div class="col-4">
-                <radial-progress-bar :diameter="150" :completed-steps="parseInt(`${traerCumplimientoOrdenes.kpis[1].atrasadas}`)" :total-steps="parseInt(`${traerCumplimientoOrdenes.kpis[1].totales}`)" start-color="#12a180" stop-color="#12a180" innerStrokeColor="#fff">
+              <div class="col-4 d-flex align-items-center p-3">
+                <radial-progress-bar :diameter="130" :completed-steps="parseInt(`${traerCumplimientoOrdenes.kpis[1].atrasadas}`)" :total-steps="parseInt(`${traerCumplimientoOrdenes.kpis[1].totales}`)" start-color="#12a180" stop-color="#12a180" innerStrokeColor="#fff">
                   <h2>{{porcentajeOrdenesAtrasadas}}%</h2>
                 </radial-progress-bar>
               </div>
@@ -127,19 +129,11 @@
 </template>
 
 <script>
-import RadialProgressBar from 'vue-radial-progress'
+import RadialProgressBar from 'vue-radial-progress';
 import { conectionApi } from '@/config/configApi';
+
 export default {
   name: 'Home',
-
-  data() {
-    return {
-      completedSteps1: 1500,
-      totalSteps1: 2000,
-      completedSteps2: 14,
-      totalSteps2: 700,
-    }
-  },
 
   components: {
     RadialProgressBar

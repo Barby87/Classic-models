@@ -1,6 +1,10 @@
 <template>
   <div class="mx-4">
+    <p>{{$route.name}}</p>
     <h5 class="font-weight-bold mb-5">Monitor de Órdenes</h5>
+    <!-- <p>{{$route.path}}</p> -->
+
+    <!-- Tabla de órdenes -->
     <table class="table table-bordered text-center">
           <thead>
             <tr>
@@ -29,11 +33,11 @@
               </td>
               <td>{{item.estado}}</td>
               <td>
-                <button class="btn btn-primary btn-sm">Ver Detalle</button>
+                <button class="btn btn-primary btn-sm" @click="seeDetailOrder(item)">Ver Detalle</button>
               </td>
             </tr>
           </tbody>
-        </table>
+    </table>
   </div>
 </template>
 
@@ -41,12 +45,6 @@
 import { conectionApi } from '@/config/configApi';
 export default {
   name: 'Orders',
-
-  data() {
-    return {
-      
-    }
-  },
 
   components: {
   },
@@ -57,9 +55,15 @@ export default {
     }
   },
 
+  methods: {
+    seeDetailOrder(item) {
+      this.$router.push(`/detail-order/${item.num_orden}`);
+    }
+  },
+
   mounted() {
     conectionApi('secure/ordenes').then(response => {
-      console.log('response Ordenes', response)
+      console.log('response Ordenes', response);
       this.$store.dispatch('guardaDataOrdenes', response);
     }).catch(error => console.error(error));
   },

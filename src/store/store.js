@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import {postApiLogin} from '@/config/configApi';
+import { postApiLogin } from '@/config/configApi';
+// import { conectionApi, postApiLogin } from '@/config/configApi';
 
 Vue.use(Vuex)
 
@@ -8,7 +9,8 @@ export default new Vuex.Store({
   state: {
     cumplimientoOrdenes: [],
     ordenes: [],
-    token: ''
+    token: '',
+    detailOrder: []
   },
 
   getters: {
@@ -22,6 +24,10 @@ export default new Vuex.Store({
 
     enviarToken(state) {
       return state.token;
+    },
+
+    sendDetailOrder(state) {
+      return state.detailOrder;
     }
   }, 
 
@@ -40,7 +46,11 @@ export default new Vuex.Store({
 
     resetToken(state) {
       state.token = '';
-    }
+    },
+
+    saveDetailOrderMutation(state, detailOrderResponse) {
+      state.detailOrder = detailOrderResponse;
+    },
   },
 
   actions: {
@@ -55,15 +65,17 @@ export default new Vuex.Store({
     guardaToken(context, user, password) {
       async function apiToken() {
         const token = await postApiLogin(user, password);
-
         context.commit('guardaTokenMutation', token.token)
       }
-      
       return apiToken();
     },
 
     resetToken(context) {
       context.commit('resetToken');      
+    },
+
+    saveDetailOrder(context, detailOrderResponse) {
+        context.commit('saveDetailOrderMutation', detailOrderResponse);
     }
   }
 })

@@ -2,6 +2,9 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
 import store from '../store/store';
+import General from '../views/General.vue';
+import DataClient from '../views/DataClient.vue';
+import Products from '../views/Products.vue';
 
 Vue.use(VueRouter)
 
@@ -16,7 +19,7 @@ Vue.use(VueRouter)
   },
   {
     path: '/inventory',
-    name: 'Inventory',
+    name: 'Inventario',
     component: () => import('../views/Inventory.vue'),
     meta: {
       auth: true
@@ -32,8 +35,33 @@ Vue.use(VueRouter)
   },
   {
     path: '/orders',
-    name: 'Orders',
+    name: 'Monitor de ordenes',
     component: () => import('../views/Orders.vue'),
+    meta: {
+      auth: true
+    }
+  },
+  {
+    path: '/detail-order/:item',
+    name: 'Detalle Orden',
+    component: () => import('../views/DetailOrder.vue'),
+    children: [
+      {
+        path: '/general/:item',
+        component: General,
+        name: 'General'
+      },
+      {
+        path: '/data-client/:item',
+        component: DataClient,
+        name: 'Datos Cliente'
+      },
+      {
+        path: '/products/:item',
+        component: Products,
+        name: 'Productos'
+      },
+    ],
     meta: {
       auth: true
     }
@@ -46,7 +74,6 @@ Vue.use(VueRouter)
       auth: true
     }
   },
-  
   {
     path: '*',
     name: 'Error404',
@@ -62,6 +89,7 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 })
+
 
 router.beforeEach((to, from, next) => {
   let authRequired = to.matched.some(route => route.meta.auth);

@@ -2,11 +2,11 @@
   <div class="row text-center mt-3">
       <div class="col-12 col-sm-12">
           <div>
-              <img :src="imgError" alt="">  
+              <img :src="imgError" alt="Imagen Error">  
           </div>
           
           <div>
-              <router-link to="/" tag="button" class="btn btn-secondary">Volver al inicio</router-link>
+              <button class="btn btn-secondary" @click="backToHome">Volver al inicio</button>
           </div>  
       </div>
   </div>
@@ -20,6 +20,12 @@ export default {
     data () {
         return {
             imgError: Error404
+        }
+    },
+
+    methods: {
+        backToHome() {
+            this.$router.push('/');
         }
     }
 }
